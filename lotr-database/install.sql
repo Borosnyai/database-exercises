@@ -31,7 +31,7 @@ CREATE TABLE Battles (
 CREATE TABLE Participation (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     character_id INTEGER NOT NULL,
-    battle_id INTEGER NOT NULL,
+    battle_id INTEGER, -- NULL for events that are not a battle (e.g. the Ring changing hands)
     outcome TEXT,
     FOREIGN KEY (character_id) REFERENCES Characters(id),
     FOREIGN KEY (battle_id) REFERENCES Battles(id)
