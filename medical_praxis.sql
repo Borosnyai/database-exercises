@@ -1,6 +1,6 @@
-/*Kikapcsolja az idegen kulcsokat*/
+/* Disable foreign keys */
 PRAGMA foreign_keys = OFF;
-/*Ha tabla letezik,akkor töröli*/
+/* Drop the table if it exists */
 DROP TABLE IF EXISTS Patient;
 DROP TABLE IF EXISTS Doctor;
 DROP TABLE IF EXISTS Appointment;
@@ -128,19 +128,19 @@ INSERT INTO Doctor (first_name, last_name, specialty, telefon, email)
 VALUES
 ('John', 'Dhoe', 'kardiologus', '13456789235', 'john.dhoe@hospital.com');
 
-/*Listázd ki az összes páciens nevét és születési dátumát!*/
+/* List the names and dates of birth of all patients. */
 SELECT p.first_name || " " ||  p.last_name AS full_name, p.birth_date 
 FROM Patient p ;
 
 SELECT * FROM Doctor d ;
 
--- Listázd ki azon orvosok nevét és szakterületét, akik kardiológusok!
+-- List the names and specialities of all doctors who are cardiologists.
 SELECT d.first_name || " " || d.last_name AS full_name , d.specialty
 FROM Doctor d
 WHERE specialty = 'kardiologus';
 
 
--- Listázd ki azon páciensek nevét és biztosítási számát, akiknek van időpontjuk a "Scheduled" státuszban!
+-- List the names and insurance numbers of patients who have an appointment with status "Scheduled".
 SELECT p.first_name || " " || p.last_name as full_name, p.national_insurancecard 
 FROM Patient p 
 INNER JOIN Appointment a  ON p.id = a.patient_id 
@@ -151,22 +151,22 @@ SELECT * FROM WaitingList wl ;
 
 SELECT * FROM Patient p ;
 
--- Számold meg, hány számla van, ami még nincs kifizetve ("Pending" státusz)!
+-- Count how many invoices are still unpaid (status "Pending").
 SELECT COUNT(b.status) FROM Billing b 
 WHERE b.status = 'Pending';
 
--- Listázd ki az összes időpontot dátum szerint növekvő sorrendben!
+-- List all appointments in ascending order by date.
 
 SELECT a.appointment_date 
 FROM Appointment a ;
 
--- Csoportosítsd a számlákat státusz szerint, és add meg, hogy hány számla tartozik az egyes státuszokhoz!
+-- Group the invoices by status and give the number of invoices per status.
 
 SELECT b.status, COUNT(b.invoice_date) FROM Billing b 
 GROUP BY b.status ;
 
--- 7. Feladat: WaitingList lekérdezés
--- Listázd ki azon páciensek nevét és preferált időpontját, akik még várólistán vannak ("Waiting" státusz)!
+-- Task 7: WaitingList query
+-- List the names and preferred times of patients who are still on the waiting list (status "Waiting").
 
 SELECT p.first_name || " " || p.last_name as full_name, wl.preferred_date 
 FROM Patient p

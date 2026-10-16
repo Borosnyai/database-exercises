@@ -72,34 +72,34 @@ SELECT * FROM Benachrichtigung;
 
 
 INSERT INTO Mitgliedszahlung (mitglied_id, jahr, gesamt_bezahlt) VALUES
-    (1, 2024, 300.00),  -- Max Müller teljesen befizette az éves díjat
-    (2, 2024, 50.00),   -- Lisa Schmidt 50€-t fizetett be
-    (3, 2024, 200.00);  -- Thomas Becker 200€-t fizetett be
+    (1, 2024, 300.00),  -- Max Müller paid the annual fee in full
+    (2, 2024, 50.00),   -- Lisa Schmidt paid 50 EUR
+    (3, 2024, 200.00);  -- Thomas Becker paid 200 EUR
 
 SELECT * FROM Mitgliedszahlung m ;
 
--- Archiváljuk az előző év befizetéseit
+-- Archive last year's payments
 INSERT INTO Mitgliedszahlung (mitglied_id, jahr, gesamt_bezahlt)
 SELECT id, strftime('%Y', 'now') - 1, gesamt_bezahlt
 FROM Mitglied;
 
--- Visszaállítjuk a befizetéseket a következő évre
+-- Reset the payments for the next year
 UPDATE Mitglied
 SET gesamt_bezahlt = 0, jahr = jahr + 1;
 
 SELECT * FROM Mitglied;
 SELECT * FROM Mitgliedszahlung;
 
--- 1️⃣ Liste alle Mitglieder mit ihrer Jahresgebühr und den bereits gezahlten Beträgen auf.
+-- 1. List all members with their annual fee and the amounts already paid.
 
 SELECT m.Vorname || " " || m.Nachname as fullname, m.jahresgebühr, m.gesamt_bezahlt 
 FROM Mitglied m; 
 
--- 2️ Liste alle Zahlungen mit Betrag, Datum und Zahlungsmethode auf.
+-- 2. List all payments with amount, date and payment method.
 
 SELECT z.beitrag, z.datum, z.zahlungsart FROM Zahlung z ;
 
--- Liste alle Mitglieder auf, die ihre Jahresgebühr vollständig bezahlt haben.
+-- 3. List all members who have paid their annual fee in full.
 
 SELECT * FROM Mitglied m ;
 SELECT * FROM Mitgliedszahlung m ;
@@ -109,7 +109,7 @@ FROM Benachrichtigung b
 RIGHT JOIN Mitglied m ON b.id = m.id 
 WHERE nachricht LIKE '%vollständig%';
 
--- 4. Liste alle Mitglieder auf, die ihre Jahresgebühr noch nicht vollständig bezahlt haben.
+-- 4. List all members who have not yet paid their annual fee in full.
 SELECT * FROM Benachrichtigung b ;
 
 SELECT m.Nachname , b.nachricht

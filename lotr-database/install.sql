@@ -52,12 +52,12 @@ SELECT * FROM "Characters" c ;
 
 INSERT INTO Places (name, region, description)
 VALUES 
-    ('Shire', 'Eriador', 'A hobbitok otthona, békés vidék.'),
-    ('Rivendell', 'Eriador', 'Az elfek menedéke, Elrond háza.'),
-    ('Moria', 'Misty Mountains', 'Ősi törp bányák, Balrog lakhelye.'),
-    ('Helm''s Deep', 'Rohan', 'A rohaniak egyik legnagyobb erődje.'),
-    ('Mordor', 'East', 'Sauron birodalma, a Gonosz központja.'),
-    ('Mount Doom', 'Mordor', 'A Végzet Hegye, itt készült a Gyűrű.');
+    ('Shire', 'Eriador', 'Home of the hobbits, a peaceful land.'),
+    ('Rivendell', 'Eriador', 'Refuge of the elves, the house of Elrond.'),
+    ('Moria', 'Misty Mountains', 'Ancient dwarf mines, home of the Balrog.'),
+    ('Helm''s Deep', 'Rohan', 'One of the greatest fortresses of Rohan.'),
+    ('Mordor', 'East', 'Sauron''s realm, the centre of evil.'),
+    ('Mount Doom', 'Mordor', 'Mount Doom, where the Ring was forged.');
 
 
    
@@ -72,12 +72,12 @@ VALUES
 
  INSERT INTO Participation (character_id, battle_id, outcome)
 VALUES 
-    (2, 1, 'Victory'),  -- Aragorn Helm's Deep-nél harcolt és győzött
-    (3, 1, 'Victory'),  -- Legolas Helm's Deep-nél harcolt és győzött
-    (4, 1, 'Victory'),  -- Gimli Helm's Deep-nél harcolt és győzött
-    (2, 2, 'Victory'),  -- Aragorn a Pelennor Mezőn harcolt és győzött
-    (5, 3, 'Victory'),  -- Gandalf Minas Tirith ostrománál harcolt
-    (6, 4, 'Defeat');   -- Sauron a Fekete Kapunál végül vesztett
+    (2, 1, 'Victory'),  -- Aragorn fought at Helm's Deep and won
+    (3, 1, 'Victory'),  -- Legolas fought at Helm's Deep and won
+    (4, 1, 'Victory'),  -- Gimli fought at Helm's Deep and won
+    (2, 2, 'Victory'),  -- Aragorn fought at the Pelennor Fields and won
+    (5, 3, 'Victory'),  -- Gandalf fought at the siege of Minas Tirith
+    (6, 4, 'Defeat');   -- Sauron ultimately lost at the Black Gate
 
 SELECT * FROM Participation p ;
 SELECT * FROM "Characters" c ;

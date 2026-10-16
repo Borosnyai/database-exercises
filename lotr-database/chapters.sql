@@ -1,4 +1,4 @@
--- Schreibe eine Abfrage, die Namen und die Rasse aller Charactekre ausgibt, die an keinen Ereignis teilgenommen haben und nichts besitzen.
+-- Write a query that returns the names and races of all characters who took part in no event and own nothing.
 
 SELECT c.name, c.race, b.name AS battle_name
 FROM Characters c
