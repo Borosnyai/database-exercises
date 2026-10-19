@@ -13,12 +13,12 @@ CREATE TABLE Patient(
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
 	birth_date DATE NOT NULL,
-	adress TEXT NOT NULL,
-	telefon TEXT NOT NULL,
+	address TEXT NOT NULL,
+	phone TEXT NOT NULL,
 	email TEXT NOT NULL
 );
 
-INSERT INTO Patient (first_name, last_name, birth_date, adress, telefon, email)
+INSERT INTO Patient (first_name, last_name, birth_date, address, phone, email)
 VALUES 
     ('Anna', 'Kovács', '1985-04-12', 'Budapest, Kossuth u. 10.', '+36201234567', 'anna.kovacs@email.com'),
     ('Péter', 'Nagy', '1992-08-23', 'Debrecen, Petőfi tér 5.', '+36301112233', 'peter.nagy@email.com'),
@@ -33,7 +33,7 @@ CREATE TABLE Doctor(
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
 	specialty TEXT NOT NULL,
-	telefon TEXT NOT NULL,
+	phone TEXT NOT NULL,
 	email TEXT NOT NULL
 );
 
@@ -75,12 +75,12 @@ SELECT * FROM Patient p ;
 SELECT * FROM Doctor d ;
 SELECT * FROM Appointment a ;
 
-INSERT INTO Doctor (first_name, last_name, specialty, telefon, email)
+INSERT INTO Doctor (first_name, last_name, specialty, phone, email)
 VALUES 
-    ('Márta', 'Bodnár', 'Fogorvos', '+36201234567', 'marta.bodnar@hospital.com'),
-    ('István', 'Szalai', 'Szemész', '+36202223344', 'istvan.szalai@hospital.com'),
-    ('Kata', 'Molnár', 'Ortopédus', '+36303334455', 'kata.molnar@hospital.com'),
-    ('Tamás', 'Varga', 'Sebész', '+36404445566', 'tamas.varga@hospital.com');
+    ('Márta', 'Bodnár', 'Dentist', '+36201234567', 'marta.bodnar@hospital.com'),
+    ('István', 'Szalai', 'Ophthalmologist', '+36202223344', 'istvan.szalai@hospital.com'),
+    ('Kata', 'Molnár', 'Orthopedist', '+36303334455', 'kata.molnar@hospital.com'),
+    ('Tamás', 'Varga', 'Surgeon', '+36404445566', 'tamas.varga@hospital.com');
 
 
 CREATE TABLE Billing (
@@ -124,9 +124,9 @@ UPDATE WaitingList SET status = 'Notified' WHERE status = 'Notifeid';
 
 
 
-INSERT INTO Doctor (first_name, last_name, specialty, telefon, email)
+INSERT INTO Doctor (first_name, last_name, specialty, phone, email)
 VALUES
-('John', 'Dhoe', 'kardiologus', '13456789235', 'john.dhoe@hospital.com');
+('John', 'Dhoe', 'Cardiologist', '13456789235', 'john.dhoe@hospital.com');
 
 /* List the names and dates of birth of all patients. */
 SELECT p.first_name || " " ||  p.last_name AS full_name, p.birth_date 
@@ -137,7 +137,7 @@ SELECT * FROM Doctor d ;
 -- List the names and specialities of all doctors who are cardiologists.
 SELECT d.first_name || " " || d.last_name AS full_name , d.specialty
 FROM Doctor d
-WHERE specialty = 'kardiologus';
+WHERE specialty = 'Cardiologist';
 
 
 -- List the names and insurance numbers of patients who have an appointment with status "Scheduled".
